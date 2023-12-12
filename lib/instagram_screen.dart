@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'classes/vertical_scroll.dart';
-import 'classes/horizontal_scroll.dart';
-import 'classes/info_class.dart';
+import 'instagram classes/instagram_info.dart';
+import 'instagram classes/instagrame code.dart';
 
 class InstagramScreen extends StatelessWidget {
   const InstagramScreen({Key? Key}): super(key:Key);
@@ -60,43 +59,50 @@ class InstagramScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage:NetworkImage('https://bettercollective.com/wp-content/uploads/2023/09/Britt-Boskov.jpg',) ,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(child: Text('user name',style: TextStyle(color: Colors.white),)),
-                  Icon(Icons.more_horiz,color: Colors.white,)
-                ],
+        body: ListView.separated(itemBuilder:(context, index) => Instagrame_code(instaInfo: list[index],),
+        separatorBuilder: (context, index) => SizedBox(
+          height: 15,
               ),
+          itemCount: list.length,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.black,
+                // icon:Icon(CupertinoIcons.house_fill),
+               icon: Column(children: [Icon(CupertinoIcons.house_fill),CircleAvatar(
+                radius:3,
+                backgroundColor: Colors.red,
+               ),],),
+              label: ''
             ),
-            Image.network('https://docs.flutter.dev/assets/images/flutter-logo-sharing.png'),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  Icon(CupertinoIcons.heart,color: Colors.white,),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.mode_comment_outlined,color: Colors.white,),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.send,color: Colors.white,),
-                  Expanded(child: Icon(CupertinoIcons.bookmark,color: Colors.white,))
+            BottomNavigationBarItem(
+              // icon:Icon(CupertinoIcons.house_fill),
+                icon: Column(children: [Icon(CupertinoIcons.search),],),
+                label: ''
+            ),
+            BottomNavigationBarItem(
+              // icon:Icon(CupertinoIcons.house_fill),
+                icon: Column(children: [Icon(CupertinoIcons.videocam),],),
+                label: ''
+            ),
+            BottomNavigationBarItem(
+              // icon:Icon(CupertinoIcons.house_fill),
+                icon: Column(children: [Icon(CupertinoIcons.bag),]),
+                label: ''
+            ),
+            BottomNavigationBarItem(
+              // icon:Icon(CupertinoIcons.house_fill),
+                icon: Column(children: [
+                  CircleAvatar(
+                    radius:10,
 
-                ],
-              ),
-            )
+                    backgroundImage: Image.network('https://bettercollective.com/wp-content/uploads/2023/09/Britt-Boskov.jpg').image),CircleAvatar(
+                  radius:3,
+                  backgroundColor: Colors.red,
+                ),],),
+                label: ''
+            ),
           ],
         ),
       ),
